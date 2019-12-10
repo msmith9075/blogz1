@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    {% if posts|length == 0 %}
+    <h3>No blog posts yet.</h3>
+    {% else %}
+    
+    {% for post in posts %}
+    <h3><a href="/blog?id={{post.id}}">{{post.title}}</a></h3>
+    <p>{{post.body}}</p>
+    <p><small>written by <a href="/blog?user={{post.owner_id}}">{{post.owner.username}}</a> on {{post.pub_date}} UTC</small></p>
+    <hr>
+    {% endfor %}
+
+    {% endif %}
+
+{% endblock %}
